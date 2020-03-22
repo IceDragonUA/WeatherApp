@@ -3,13 +3,13 @@ package com.evaluation.weatherapp.ui.activities
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.evaluation.weatherapp.R
-import com.evaluation.weatherapp.data.ForecastRequest
 import com.evaluation.weatherapp.domain.commands.RequestForecastCommand
-import com.evaluation.weatherapp.domain.model.Forecast
 import com.evaluation.weatherapp.ui.adapter.ForecastListAdapter
-import org.jetbrains.anko.*
+import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.toast
+import org.jetbrains.anko.uiThread
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,8 +17,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
-
-        val forecastList: RecyclerView = find(R.id.forecast_list)
 
         forecastList.layoutManager = LinearLayoutManager(this)
 

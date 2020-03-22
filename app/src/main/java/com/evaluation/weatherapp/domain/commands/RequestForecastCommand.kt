@@ -8,7 +8,7 @@ import com.evaluation.weatherapp.domain.model.ForecastList
  * @author Vladyslav Havrylenko
  * @since 22.03.2020
  */
-class RequestForecastCommand(val zipCode: String) : Command<ForecastList> {
+class RequestForecastCommand(private val zipCode: String) : Command<ForecastList> {
 
     override fun execute(): ForecastList {
         val forecastRequest = ForecastRequest(zipCode)
