@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.evaluation.weatherapp.R
 import com.evaluation.weatherapp.data.ForecastRequest
 import com.evaluation.weatherapp.domain.commands.RequestForecastCommand
+import com.evaluation.weatherapp.domain.model.Forecast
 import com.evaluation.weatherapp.ui.adapter.ForecastListAdapter
 import org.jetbrains.anko.*
 
@@ -24,7 +25,13 @@ class MainActivity : AppCompatActivity() {
         doAsync {
             val result = RequestForecastCommand("94043").execute()
             uiThread {
-                forecastList.adapter = ForecastListAdapter(result)
+                forecastList.adapter = ForecastListAdapter(result,
+                    object : ForecastListAdapter.OnItemClickListener {
+                        override fun invoke(forecast: Forecast) {
+                            toast(forecast.date)
+                        }
+
+                    })
             }
         }
     }

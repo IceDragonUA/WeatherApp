@@ -36,4 +36,6 @@ dependencies {
     implementation dep.constraintLayout
 
     implementation dep.gson
+
+    implementation dep.picasso
 }
