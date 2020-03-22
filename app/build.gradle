@@ -34,4 +34,6 @@ dependencies {
     implementation dep.recyclerView
     implementation dep.ktxCore
     implementation dep.constraintLayout
+
+    implementation dep.gson
 }
