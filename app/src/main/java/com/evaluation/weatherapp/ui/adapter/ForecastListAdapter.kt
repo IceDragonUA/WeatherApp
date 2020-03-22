@@ -11,24 +11,20 @@ import com.evaluation.weatherapp.domain.model.ForecastList
  * @author Vladyslav Havrylenko
  * @since 04.09.2019
  */
-class ForecastListAdapter(private val weekForecast: ForecastList) :
-    RecyclerView.Adapter<ForecastListAdapter.ViewHolder>() {
+class ForecastListAdapter(private val weekForecast: ForecastList)
+    : RecyclerView.Adapter<ForecastListAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(TextView(parent.context))
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        ViewHolder(TextView(parent.context))
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(weekForecast.dailyForecast[position])
+        with(weekForecast.dailyForecast[position]) {
+            holder.textView.text = "$date - $description - $high/$low"
+        }
     }
 
     override fun getItemCount(): Int = weekForecast.dailyForecast.size
 
-    class ViewHolder(private val textView: TextView) : RecyclerView.ViewHolder(textView) {
-
-        @SuppressLint("SetTextI18n")
-        fun bind(item: Forecast) {
-            textView.text = "$item.date - $item.description - $item.high/$item.low"
-        }
-    }
+    class ViewHolder(val textView: TextView) : RecyclerView.ViewHolder(textView)
 }
