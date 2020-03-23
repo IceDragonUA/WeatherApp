@@ -29,6 +29,7 @@ dependencies {
 
     implementation dep.kotlinStd
     implementation dep.anko
+    implementation dep.ankoSqlite
 
     implementation dep.appCompat
     implementation dep.recyclerView
