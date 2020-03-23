@@ -1,4 +1,4 @@
-package com.evaluation.weatherapp.utils
+package com.evaluation.weatherapp.ui.utils
 
 import android.content.Context
 import android.view.View

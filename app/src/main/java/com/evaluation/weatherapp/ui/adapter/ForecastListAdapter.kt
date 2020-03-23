@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.evaluation.weatherapp.R
 import com.evaluation.weatherapp.domain.model.Forecast
 import com.evaluation.weatherapp.domain.model.ForecastList
-import com.evaluation.weatherapp.utils.ctx
+import com.evaluation.weatherapp.ui.utils.ctx
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_forecast.view.*
 
