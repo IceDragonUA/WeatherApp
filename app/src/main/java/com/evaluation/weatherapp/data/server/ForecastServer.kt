@@ -2,7 +2,9 @@ package com.evaluation.weatherapp.data.server
 
 import com.evaluation.weatherapp.data.db.ForecastDb
 import com.evaluation.weatherapp.domain.datasource.ForecastDataSource
+import com.evaluation.weatherapp.domain.model.Forecast
 import com.evaluation.weatherapp.domain.model.ForecastList
+import java.lang.UnsupportedOperationException
 
 /**
  * @author Vladyslav Havrylenko
@@ -19,4 +21,7 @@ class ForecastServer(
         forecastDb.saveForecast(converted)
         return forecastDb.requestForecastByZipCode(zipCode, date)
     }
+
+    override fun requestDayForecast(id: Long) =
+        throw UnsupportedOperationException()
 }
