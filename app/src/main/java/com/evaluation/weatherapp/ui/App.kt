@@ -1,7 +1,7 @@
 package com.evaluation.weatherapp.ui
 
 import android.app.Application
-import com.evaluation.weatherapp.ui.utils.DelegatesExt
+import com.evaluation.weatherapp.extensions.DelegatesExt
 
 /**
  * @author Vladyslav Havrylenko

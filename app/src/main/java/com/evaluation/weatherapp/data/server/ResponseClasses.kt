@@ -1,4 +1,4 @@
-package com.evaluation.weatherapp.data
+package com.evaluation.weatherapp.data.server
 
 /**
  * @author Vladyslav Havrylenko

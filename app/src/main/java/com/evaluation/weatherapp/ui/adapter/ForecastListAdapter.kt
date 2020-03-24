@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.evaluation.weatherapp.R
 import com.evaluation.weatherapp.domain.model.Forecast
 import com.evaluation.weatherapp.domain.model.ForecastList
-import com.evaluation.weatherapp.ui.utils.ctx
+import com.evaluation.weatherapp.extensions.ctx
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_forecast.view.*
+import java.text.DateFormat
+import java.util.*
 
 /**
  * @author Vladyslav Havrylenko
@@ -38,13 +40,18 @@ class ForecastListAdapter(
                     .load(iconUrl)
                     .into(itemView.icon)
 
-                itemView.date.text = date
+                itemView.date.text = convertDate(date)
                 itemView.description.text = description
                 itemView.maxTemperature.text = "$high"
                 itemView.minTemperature.text = "$low"
 
                 itemView.setOnClickListener { itemClick(this) }
             }
+        }
+
+        private fun convertDate(date: Long): String {
+            val df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())
+            return df.format(date)
         }
     }
 }
