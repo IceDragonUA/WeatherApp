@@ -1,6 +1,6 @@
 package com.evaluation.weatherapp.data.db
 
-import android.text.method.TextKeyListener.clear
+import com.evaluation.weatherapp.domain.datasource.ForecastDataSource
 import com.evaluation.weatherapp.domain.model.ForecastList
 import com.evaluation.weatherapp.extensions.clear
 import com.evaluation.weatherapp.extensions.parseList
@@ -16,9 +16,9 @@ import org.jetbrains.anko.db.select
 class ForecastDb(
     private val forecastDbHelper: ForecastDbHelper = ForecastDbHelper.instance,
     private val dataMapper: DbDataMapper = DbDataMapper()
-) {
+) : ForecastDataSource {
 
-    fun requestForecastByZipCode(zipCode: Long, date: Long) = forecastDbHelper.use {
+    override fun requestForecastByZipCode(zipCode: Long, date: Long) = forecastDbHelper.use {
 
         val dailyRequest = "${DayForecastTable.CITY_ID} = ? AND ${DayForecastTable.DATE} >= ?"
         val dailyForecast = select(DayForecastTable.NAME)

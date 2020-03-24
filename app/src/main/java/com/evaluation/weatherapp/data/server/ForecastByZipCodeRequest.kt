@@ -7,7 +7,7 @@ import java.net.URL
  * @author Vladyslav Havrylenko
  * @since 22.03.2020
  */
-class ForecastRequest(private val zipCode: Long) {
+class ForecastByZipCodeRequest(private val zipCode: Long, val gson: Gson = Gson()) {
 
     companion object {
         private const val APP_ID = "15646a06818f61f7b8d7823ca833e1ce"
@@ -17,6 +17,6 @@ class ForecastRequest(private val zipCode: Long) {
 
     fun execute(): ForecastResult {
         val forecastJsonStr = URL(COMPLETE_URL + zipCode).readText()
-        return Gson().fromJson(forecastJsonStr, ForecastResult::class.java)
+        return gson.fromJson(forecastJsonStr, ForecastResult::class.java)
     }
 }

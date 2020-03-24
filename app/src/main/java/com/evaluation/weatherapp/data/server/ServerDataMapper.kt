@@ -1,9 +1,6 @@
-package com.evaluation.weatherapp.domain.mappers
+package com.evaluation.weatherapp.data.server
 
-import com.evaluation.weatherapp.data.server.Forecast
-import com.evaluation.weatherapp.data.server.ForecastResult
 import com.evaluation.weatherapp.domain.model.ForecastList
-import java.text.DateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 import com.evaluation.weatherapp.domain.model.Forecast as ModelForecast
@@ -12,9 +9,9 @@ import com.evaluation.weatherapp.domain.model.Forecast as ModelForecast
  * @author Vladyslav Havrylenko
  * @since 22.03.2020
  */
-class ForecastDataMapper {
+class ServerDataMapper {
 
-    fun convertFromDataModel(zipCode: Long, forecast: ForecastResult) = with(forecast) {
+    fun convertToDomain(zipCode: Long, forecast: ForecastResult) = with(forecast) {
         ForecastList(zipCode, city.name, city.country, convertForecastListToDomain(list))
     }
 
