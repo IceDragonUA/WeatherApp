@@ -1,0 +1,55 @@
+package com.evaluation.weatherapp.ui.activities
+
+import android.widget.Toolbar
+import androidx.appcompat.graphics.drawable.DrawerArrowDrawable
+import androidx.recyclerview.widget.RecyclerView
+import com.evaluation.weatherapp.R
+import com.evaluation.weatherapp.extensions.ctx
+import com.evaluation.weatherapp.extensions.slideEnter
+import com.evaluation.weatherapp.extensions.slideExit
+import com.evaluation.weatherapp.ui.App
+import org.jetbrains.anko.toast
+
+/**
+ * @author Vladyslav Havrylenko
+ * @since 24.03.2020
+ */
+interface ToolbarManager {
+
+    val toolbar: Toolbar
+
+    var toolbarTitle: String
+        get() = toolbar.title.toString()
+        set(value) {
+            toolbar.title = value
+        }
+
+    fun initToolbar() {
+        toolbar.inflateMenu(R.menu.menu_main)
+        toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.action_settings -> App.instance.toast("Settings")
+                else -> App.instance.toast("Unknown option")
+            }
+            true
+        }
+    }
+
+    fun enableHomeAsUp(up: () -> Unit) {
+        toolbar.navigationIcon = createUpDrawable()
+        toolbar.setNavigationOnClickListener { up() }
+    }
+
+    private fun createUpDrawable() = with(DrawerArrowDrawable(toolbar.ctx)) {
+        progress = 1f
+        this
+    }
+
+    fun attachToScroll(recyclerView: RecyclerView) {
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy > 0) toolbar.slideExit() else toolbar.slideEnter()
+            }
+        })
+    }
+}
