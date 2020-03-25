@@ -1,13 +1,14 @@
 package com.evaluation.weatherapp.ui.activities
 
-import android.widget.Toolbar
 import androidx.appcompat.graphics.drawable.DrawerArrowDrawable
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
 import com.evaluation.weatherapp.R
 import com.evaluation.weatherapp.extensions.ctx
 import com.evaluation.weatherapp.extensions.slideEnter
 import com.evaluation.weatherapp.extensions.slideExit
 import com.evaluation.weatherapp.ui.App
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 /**
@@ -28,7 +29,7 @@ interface ToolbarManager {
         toolbar.inflateMenu(R.menu.menu_main)
         toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
-                R.id.action_settings -> App.instance.toast("Settings")
+                R.id.action_settings -> toolbar.ctx.startActivity<SettingsActivity>()
                 else -> App.instance.toast("Unknown option")
             }
             true

@@ -1,13 +1,10 @@
 package com.evaluation.weatherapp.ui.activities
 
 import android.annotation.SuppressLint
-import android.os.Build
 import android.os.Bundle
 import android.widget.TextView
-import android.widget.Toolbar
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
+import androidx.appcompat.widget.Toolbar
 import com.evaluation.weatherapp.R
 import com.evaluation.weatherapp.domain.commands.RequestDayForecastCommand
 import com.evaluation.weatherapp.domain.model.Forecast
